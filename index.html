@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Escenario 1</title>
+  
+  <!-- Fuente Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --verde: #99cc06;
+      --gris-oscuro: #262626;
+    }
+
+    /* Reset */
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #000;
+    }
+
+    iframe {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    /* Pop-Up Styles */
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      justify-content: center;
+      align-items: center;
+      z-index: 10000;
+    }
+
+    #Gif {
+      width: 70%;
+      height: auto;
+      border-radius: 8px;
+      animation: zoomIn 0.5s ease-in-out;
+    }
+
+    @keyframes zoomIn {
+      from {
+        transform: scale(0.9);
+        opacity: 0;
+      }
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .popup-content {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      width: 90vw;
+      max-width: 550px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      position: relative;
+    }
+
+    .popup-content h2 {
+      margin-top: 0;
+      font-weight: 700;
+      color: var(--verde);
+    }
+
+    .popup-content p {
+      margin: 10px 0;
+      line-height: 1.4;
+      font-size: 15px;
+    }
+
+    .popup .continue-button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: var(--gris-oscuro);
+      color: #fff;
+      border: none;
+      font-weight: 600;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .popup .continue-button:hover {
+      background-color: #111;
+    }
+
+    .popup .close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 22px;
+      cursor: pointer;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <iframe
+    src="https://labs.heygen.com/guest/streaming-embed?share=eyJxdWFsaXR5IjoiaGlnaCIsImF2YXRhck5hbWUiOiIyNDdjNTFjMGM5MDc0NDI3YjNmMWZlNTBmZTJlYTg5YSIsInByZXZpZXdJbWciOiJodHRwczovL2ZpbGVzMi5oZXlnZW4uYWkvYXZhdGFyL3YzLzI0N2M1MWMwYzkwNzQ0MjdiM2YxZmU1MGZlMmVhODlhL2Z1bGwvMi4yL3ByZXZpZXdfdGFyZ2V0LndlYnAiLCJuZWVkUmVtb3ZlQmFja2dyb3VuZCI6ZmFsc2UsImtub3dsZWRnZUJhc2VJZCI6ImQ2MDcyM2VhM2Y0MjQzZmFhZDg4YmVmYjMxMDRlM2YwIiwidXNlcm5hbWUiOiI5Mzc0NGZkZTc1NGY0Y2ZjOTQzNjA2NTU4Y2M3NjZlZSJ9&amp;inIFrame=1"
+    allow="camera; microphone; autoplay; clipboard-read; clipboard-write; fullscreen; picture-in-picture; display-capture"
+    allowfullscreen
+    loading="lazy"
+    referrerpolicy="no-referrer-when-downgrade"
+  ></iframe>
+
+  <!-- Pop-Up -->
+  <div id="popup" class="popup">
+    <div class="popup-content">
+      <span id="closePopup" class="close">&times;</span>
+      <h2><b>Importante</b></h2>
+      <p><b>Para interactuar con el Avatar, tenga en cuenta las siguientes indicaciones:</b></p>
+      <p><b>1. Configure su conversación:</b> Haga clic en <b>"Chat now"</b> y seleccione el idioma <b>"Spanish"</b> para comenzar.</p>
+      <img id="Gif" src="https://i.gifer.com/3OsMY.gif" alt="Ejemplo de Configuración">
+      <p><b>2. Active su micrófono desde el navegador:</b> Para aceptar los permisos, haga clic en <b>"Permitir mientras visitas el sitio"</b>. Este ajuste se realiza por única vez. </p>
+      <button id="continueButton" class="continue-button">Continuar</button>
+    </div>
+  </div>
+
+  <script>
+    // Mostrar el pop-up al cargar la página
+    window.addEventListener('load', () => {
+      document.getElementById('popup').style.display = 'flex';
+    });
+
+    // Cerrar el pop-up
+    document.getElementById('closePopup').addEventListener('click', () => {
+      document.getElementById('popup').style.display = 'none';
+    });
+
+    document.getElementById('continueButton').addEventListener('click', () => {
+      document.getElementById('popup').style.display = 'none';
+    });
+  </script>
+</body>
+</html>
